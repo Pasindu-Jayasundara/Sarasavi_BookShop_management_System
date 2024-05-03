@@ -1,0 +1,19 @@
+ISBN = 9780195630343
+Title = The Village in the Jungle
+Author = Leonard Woolf
+Published Year = 1913
+
+ISBN = 9780812981605
+Title = The Power of Habit
+Author = Charles Duhigg
+Published Year = 2012
+
+ISBN = 9780439784542
+Title = Harry Potter and the Half-Blood Prince
+Author = J. K. Rowling
+Published Year = 2005
+
+ISBN = 9780553593716
+Title = A Game of Thrones
+Author = George R. R. Martin
+Published Year = 1996

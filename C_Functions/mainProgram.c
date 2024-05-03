@@ -17,7 +17,7 @@
 
 int main()
 {
-    system("cls");
+    system("clear");
     int LRchoice;
     bool break_while = false;
 
@@ -36,14 +36,12 @@ int main()
         {
             break_while = true;
             login();
-            // printf("Login");
             break;
         }
         else if (LRchoice == 2)
         {
             break_while = true;
             registerUser();
-            // printf("Register");
             break;
         }
         else

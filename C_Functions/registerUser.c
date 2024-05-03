@@ -4,8 +4,9 @@
 #include<stdlib.h>
 
 void registerUser(){
-    system("cls");
-    getchar();
+
+    system("clear");
+    
     char uname[100];
     char password[100];
     char conf_password[100];
@@ -15,11 +16,12 @@ void registerUser(){
     printf("------------------------\n");
     printf("\tRegister\n");
     printf("------------------------\n");
+    //getchar();
     printf("Enter,\n\n");
 
     printf("User Name: ");
     fgets(uname, sizeof(uname), stdin);
-    uname[strcspn(uname, "\n")] = '\0'; // Remove newline character
+    uname[strcspn(uname, "\r\n")] = '\0'; // Remove newline character
 
     printf("Password: ");
     scanf("%s", password);
@@ -42,9 +44,7 @@ void registerUser(){
             while (fgets(registered_value, sizeof(registered_value), pFile) != NULL)
             {
                 // Remove newline character if present
-                registered_value[strcspn(registered_value, "\n")] = '\0';
-
-                // printf("Registered Value = %s\n",registered_value);
+                registered_value[strcspn(registered_value, "\r\n")] = '\0';
 
                 // Split the line into username and password
                 char *token = strtok(registered_value, "\t");
@@ -56,7 +56,7 @@ void registerUser(){
                         printf("------------------------\n");
                         printf("You have already registered\n");
                         printf("------------------------\n");
-                        Sleep(2000);
+                        sleep(1.5);
                         fclose(pFile);
                         login(); // login function here
                     }
@@ -71,13 +71,13 @@ void registerUser(){
         printf("------------------------\n");
         printf("Registered Successfully\n");
         printf("------------------------\n");
-        // Login function in here........
+        sleep(1.5);
         login();
     }
     else
     {
         printf("Passwords do not match\n\n");
+        sleep(1.5);
         registerUser();
     }
-    // return 0;
 }

@@ -5,11 +5,13 @@
 #include "viewBookDetails.h"
 
 #include <stdio.h>
-#include <stdlib.h> 
-#include <windows.h>
+#include <stdlib.h>
+// #include <windows.h>
+#include<unistd.h>
 
-void admin(){
-   system("cls");
+void admin()
+{
+    system("clear");
 
     int ad_choice;
 
@@ -40,14 +42,19 @@ void admin(){
         viewBookDetails(1);
         break;
     case 99:
-        printf("Exiting!");
+        printf("\n---------------------------------\n");
+        printf("Exiting!\n");
+        sleep(1);
         login();
         break;
     default:
-        printf("\nEnter Valid choice\n");
-        Sleep(1500); // Delay the message for 1.5 seconds, in UNIX use sleep, in Windows use Sleep
+        printf("\n---------------------------------\n");
+        printf("Enter Valid choice\n");
+        printf("Returning!..\n");
+        printf("---------------------------------\n");
+        sleep(1.5); // Delay the message for 1.5 seconds, in UNIX use sleep, in Windows use Sleep
 
-        admin(); //selfCall
+        admin(); // selfCall
         break;
     }
 }

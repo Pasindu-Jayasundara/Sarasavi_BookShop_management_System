@@ -3,44 +3,63 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <windows.h>
+// #include <windows.h>
 #include <ctype.h>
 
 void orderBook()
 {
-    system("cls");
+    system("clear");
     char ret;
-    char ISBN[200];
-    char filename[200];
-    char registered_single_record[200];
+    char ISBN[2000];
+    char filename[2020];
+    char lines[2000];
+    char registered_single_record[2000];
     int user_preference;
     int ord_Quantity;
     float bill;
+    char view_all_book[2000];
 
     printf("---------------------------------\n");
     printf("\tOrder Book\n");
     printf("---------------------------------\n");
+    // ###########################################  -> Enter list
+    FILE *book_det = fopen("../Book_Stock/Book_Stock.txt", "r");
+    printf("ISBN\tTitle\tQuantity\n");
+    printf("---------------------------------\n");
 
+    do
+    {
+        memset(view_all_book, 0, sizeof(book_det)); // clear the previous record
+        fgets(view_all_book, sizeof(view_all_book), book_det);
+        printf("%s", view_all_book);
+
+    } while (!feof(book_det));
+    printf("---------------------------------\n");
+    fclose(book_det);
+    // ###########################################
     printf("Enter,\n");
     getchar();
+    
     printf("ISBN: ");
     fgets(ISBN, sizeof(ISBN), stdin);
-    ISBN[strcspn(ISBN, "\n")] = '\0';
+    ISBN[strcspn(ISBN, "\r\n")] = '\0';
 
     sprintf(filename, "../BookShop/%s.txt", ISBN);
 
     FILE *pOrdF = fopen(filename, "r");
     if (pOrdF == NULL)
     {
-        printf("-----------------------\n");
+        printf("---------------------------------\n");
         printf("File is unavailable\n");
-        printf("-----------------------\n");
+        printf("---------------------------------\n");
+        sleep(1.3);
+        orderBook();
     }
     else
     {
         while (fgets(registered_single_record, sizeof(registered_single_record), pOrdF) != NULL)
         {
-            registered_single_record[strcspn(registered_single_record, "\n")] = '\0';
+            registered_single_record[strcspn(registered_single_record, "\r\n")] = '\0';
 
             char *title = strtok(registered_single_record, "\t");
             char *author = strtok(NULL, "\t");
@@ -60,17 +79,14 @@ void orderBook()
                     printf("Enter the quantity: ");
                     scanf("%d", &ord_Quantity);
                     bill = price * ord_Quantity;
-                    // Enter decoration lines
-                    printf("\n-----------------------\n");
+
+                    printf("\n---------------------------------\n");
                     printf("Your bill is: %.2f x %d = %.2f\n", price, ord_Quantity, bill);
-                    printf("-----------------------\n");
+                    printf("---------------------------------\n");
 
                     FILE *upTXTf = fopen(filename, "w");
                     fprintf(upTXTf, "%s\t%s\t%s\t%s\t%.2f\t%d", title, author, pub_Year, isbn, price, (quantity - ord_Quantity));
                     fclose(upTXTf);
-
-                    // Enter decoration lines
-                    printf("-----------------------\n");
 
                     printf("Return Back (Y): ");
                     scanf(" %c", &ret);
@@ -85,7 +101,7 @@ void orderBook()
                     printf("-----------------------\n");
                     printf("Book is unavailable\n");
                     printf("-----------------------\n");
-                    Sleep(2000);
+                    sleep(1.5);
 
                     orderBook();
                 }
