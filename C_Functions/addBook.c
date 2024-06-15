@@ -1,20 +1,35 @@
+// #include "addBook.h"
 #include "admin.h"
+// #include "deleteBook.h"
+// #include "localUser.h"
+// #include "login.h"
+// #include "orderBook.h"
+// #include "registerUser.h"
+// #include "viewAllBook.h"
+// #include "viewBookDetails.h"
 
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
 #include <stdlib.h>
 
+// void clNewLChara()
+// {
+//     int c;
+//     while ((c = getchar()) != '\n' && c != EOF)
+//         ;
+// }
+
 void addBook()
 {
-    system("clear");
+    system("cls");
 
-    char title[2000];
-    char author[2000];
+    char title[200];
+    char author[200];
     int pub_year;
-    char ISBN[2000];
+    char ISBN[200];
     float price;
-    char fileName[2100];
+    char fileName[210];
     char Next;
     int quantity;
 
@@ -24,17 +39,16 @@ void addBook()
     do
     {
         printf("Enter, \n\n");
-	
-	//printf("\n");
+       
         printf("Book Title : ");
         getchar();
         fgets(title, sizeof(title), stdin); // read spaces
-        title[strcspn(title, "\r\n")] = '\0'; // remove the new line character at end
+        title[strcspn(title, "\n")] = '\0'; // remove the new line character at end
 
         printf("Author : ");
         getchar();
         fgets(author, sizeof(author), stdin);
-        author[strcspn(author, "\r\n")] = '\0';
+        author[strcspn(author, "\n")] = '\0';
 
         printf("Published Year : ");
         getchar();
@@ -52,7 +66,7 @@ void addBook()
         getchar();
         scanf("%d", &quantity);
 
-        sprintf(fileName,"../BookShop/%s.txt",ISBN);
+        sprintf(fileName, "../BookShop/%s.txt", ISBN);
 
         FILE *pFile = fopen(fileName, "r");
         if (pFile != NULL)

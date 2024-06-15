@@ -17,7 +17,7 @@
 
 int main()
 {
-    system("clear");
+    system("cls");
     int LRchoice;
     bool break_while = false;
 

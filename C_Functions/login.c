@@ -1,4 +1,12 @@
-#include "registerUser.h"
+// #include "addBook.h"
+// #include "admin.h"
+// #include "deleteBook.h"
+// #include "localUser.h"
+// #include "login.h"
+// #include "orderBook.h"
+// #include "registerUser.h"
+// #include "viewAllBook.h"
+// #include "viewBookDetails.h"
 
 #include <stdio.h>
 #include <string.h>
@@ -7,7 +15,8 @@
 
 void login()
 {
-    system("clear");
+    
+    system("cls");
     getchar();
     char Next;
     char uname[100];
@@ -26,14 +35,13 @@ void login()
     do
     {
         printf("Enter,\n\n");
-
         printf("User Name: ");
         fgets(uname, sizeof(uname), stdin);
-        uname[strcspn(uname, "\r\n")] = '\0';
+        uname[strcspn(uname, "\n")] = '\0';
 
         printf("Password: ");
         fgets(pass, sizeof(pass), stdin);
-        pass[strcspn(pass, "\r\n")] = '\0';
+        pass[strcspn(pass, "\n")] = '\0';
 
         FILE *pCheck_File = fopen("../Registrations/Registration_details.txt", "r");
         if (pCheck_File == NULL)
@@ -41,14 +49,14 @@ void login()
             printf("----------------------\n");
             printf("Error while logging\n");
             printf("----------------------\n");
-            sleep(1.5);
+            Sleep(1500);
             login();
         }
         else
         {
             while (fgets(registered_single_record, sizeof(registered_single_record), pCheck_File) != NULL)
             {
-                registered_single_record[strcspn(registered_single_record, "\r\n")] = '\0';
+                registered_single_record[strcspn(registered_single_record, "\n")] = '\0';
                 char *username = strtok(registered_single_record, "\t");
                 char *password = strtok(NULL, "\t");
 
@@ -64,7 +72,7 @@ void login()
                         printf("----------------------\n");
                         printf("Login successful!\n");
                         printf("----------------------\n");
-                        sleep(1.3);
+                        Sleep(1300);
 
                         if (admin_comparison == 0)
                         {
@@ -77,6 +85,7 @@ void login()
                             break;
                         }
                         fclose(pCheck_File);
+                        // return 1; // Return 1 to indicate successful login  ####<-- user profile function <--####
                     }
                 }
             }
@@ -99,5 +108,5 @@ void login()
         Next = tolower(Next);
         getchar(); // to recurse the loop correctly
     } while (Next == 'y');
-    registerUser();
+    login();
 }

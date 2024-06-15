@@ -6,12 +6,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-// #include <windows.h>
-#include<unistd.h>
+#include <windows.h>
 
 void admin()
 {
-    system("clear");
+    system("cls");
 
     int ad_choice;
 
@@ -43,8 +42,7 @@ void admin()
         break;
     case 99:
         printf("\n---------------------------------\n");
-        printf("Exiting!\n");
-        sleep(1);
+        printf("Exiting!");
         login();
         break;
     default:
@@ -52,7 +50,7 @@ void admin()
         printf("Enter Valid choice\n");
         printf("Returning!..\n");
         printf("---------------------------------\n");
-        sleep(1.5); // Delay the message for 1.5 seconds, in UNIX use sleep, in Windows use Sleep
+        Sleep(1500); // Delay the message for 1.5 seconds, in UNIX use sleep, in Windows use Sleep
 
         admin(); // selfCall
         break;

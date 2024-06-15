@@ -9,7 +9,8 @@
 
 void localUser()
 {
-    system("clear");
+
+    system("cls");
 
     bool break_while = false;
     int loc_choice;
@@ -43,7 +44,7 @@ void localUser()
         printf("\n---------------------------------\n");
         printf("Exiting!");
         break_while = false;
-        sleep(1.5);
+        Sleep(1500);
         login();
         break;
     default:
@@ -51,7 +52,7 @@ void localUser()
         printf("Enter valid choice\n");
         printf("---------------------------------\n");
 
-        sleep(1.5);
+        Sleep(1500);
         localUser();
         break;
     }

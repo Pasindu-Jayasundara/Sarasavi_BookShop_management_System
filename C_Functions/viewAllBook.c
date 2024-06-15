@@ -1,15 +1,22 @@
+// #include "addBook.h"
 #include "admin.h"
+// #include "deleteBook.h"
 #include "localUser.h"
+// #include "login.h"
+// #include "orderBook.h"
+// #include "registerUser.h"
+// #include "viewAllBook.h"
+// #include "viewBookDetails.h"
 
 #include <stdio.h>
-//#include <windows.h>
+#include <windows.h>
 #include <stdlib.h>
 
 void viewAllBook(int profile_type)
 {
     char next;
 
-    system("clear");
+    system("cls");
     printf("---------------------------------\n");
     printf("\tAll available books\n");
     printf("---------------------------------\n");
@@ -20,7 +27,7 @@ void viewAllBook(int profile_type)
     if (book == NULL)
     {
         printf("file does not exist\n");
-        sleep(1.5);
+        Sleep(1500);
         if (profile_type == 1)
         {
             admin();
